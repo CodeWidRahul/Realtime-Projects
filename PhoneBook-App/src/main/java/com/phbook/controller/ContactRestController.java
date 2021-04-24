@@ -29,6 +29,7 @@ public class ContactRestController {
 
 	public ContactRestController(ContactService contactService) {
 		this.contactService = contactService;
+		System.out.println(contactService.getClass().getName());
 	}
 
 	@ResponseBody

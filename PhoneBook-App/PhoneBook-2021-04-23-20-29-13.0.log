@@ -1,0 +1,8 @@
+2021-04-23 20:29:13.189  INFO 13888 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-23 20:29:13.281  INFO 13888 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-23 20:29:13.332  INFO 13888 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-23 20:29:13.791  INFO 13888 --- [main] com.phbook.PhoneBookAppApplicationTests  : Started PhoneBookAppApplicationTests in 15.119 seconds (JVM running for 30.233)
+2021-04-23 20:29:13.960  INFO 13888 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-23 20:29:13.963  INFO 13888 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-23 20:29:13.989  INFO 13888 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-23 20:29:13.990  INFO 13888 --- [SpringContextShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'

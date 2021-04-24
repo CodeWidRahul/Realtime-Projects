@@ -1,0 +1,6 @@
+2021-04-23 19:36:47.120  INFO 7236 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-04-23 19:36:47.205  INFO 7236 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-04-23 19:36:47.250  INFO 7236 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-04-23 19:36:47.719  INFO 7236 --- [main] com.phbook.PhoneBookAppApplicationTests  : Started PhoneBookAppApplicationTests in 19.956 seconds (JVM running for 37.572)
+2021-04-23 19:36:47.945  INFO 7236 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-23 19:36:47.947  INFO 7236 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

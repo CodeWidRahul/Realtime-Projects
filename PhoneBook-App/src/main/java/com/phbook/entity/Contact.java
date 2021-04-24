@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import lombok.Setter;
 @Table(name = "CONTACT_DTLS")
 @Setter
 @Getter
-@XmlRootElement
+@AllArgsConstructor
 public class Contact {
 	@Id
 	@GeneratedValue

@@ -1,0 +1,5 @@
+2021-04-23 20:12:39.386  INFO 13516 --- [main] com.phbook.PhoneBookAppApplicationTests  : Started PhoneBookAppApplicationTests in 14.11 seconds (JVM running for 28.581)
+2021-04-23 20:12:39.624  INFO 13516 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-23 20:12:39.626  INFO 13516 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-23 20:12:39.659  INFO 13516 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-23 20:12:39.680  INFO 13516 --- [SpringContextShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
