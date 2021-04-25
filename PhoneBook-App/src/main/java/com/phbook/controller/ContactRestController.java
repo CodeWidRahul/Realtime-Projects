@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phbook.entity.Contact;
@@ -32,7 +31,6 @@ public class ContactRestController {
 		System.out.println(contactService.getClass().getName());
 	}
 
-	@ResponseBody
 	@PostMapping
 	public ResponseEntity<String> saveContact(@RequestBody Contact contact) {
 		logger.debug("** saveConatct() - Execution started. **");
@@ -66,20 +64,23 @@ public class ContactRestController {
 	}
 
 	@GetMapping("/{contactId}")
-	public ResponseEntity<Contact> getContactById(@PathVariable Integer contactId) {
+	public ResponseEntity<Object> getContactById(@PathVariable Integer contactId) {
 		logger.debug("** getContactById() - Execution started. **");
 		Contact contact = null;
+		ResponseEntity<Object> responseEntity;
 		try {
 			contact = contactService.getContactById(contactId);
 			if (contact == null) {
 				logger.info("** getContactById() - No contact found ! **");
 				throw new NoDataFoundException("No contact found.");
-			}
+			} else
+				responseEntity = new ResponseEntity<>(contact, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error("** Exception occurred :- **" + e.getMessage());
+			responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		logger.debug("** getContactById() - Execution ended. **");
-		return new ResponseEntity<Contact>(contact, HttpStatus.OK);
+		return responseEntity;
 	}
 
 	@DeleteMapping("/{contactId}")
@@ -91,7 +92,8 @@ public class ContactRestController {
 			if (isDeleted) {
 				logger.info("** deleteContactById() - contact deleted. **");
 				responseEntity = new ResponseEntity<String>("Contact deleted successfully.", HttpStatus.OK);
-			}
+			} else
+				responseEntity = new ResponseEntity<String>("Failed to delete!", HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (Exception e) {
 			logger.error("** Exception occurred :- **" + e.getMessage());
 			responseEntity = new ResponseEntity<String>("Failed to delete!", HttpStatus.INTERNAL_SERVER_ERROR);
