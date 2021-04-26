@@ -25,13 +25,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Map<Integer, String> getStates() {
+	public Map<Integer, String> getStates(Integer countryId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Map<Integer, String> getCities() {
+	public Map<Integer, String> getCities(Integer stateId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
