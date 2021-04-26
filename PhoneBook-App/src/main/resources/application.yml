@@ -1,0 +1,24 @@
+logging:
+  file:
+    name: PhoneBook.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: PhoneBook-%d{yyyy-MM-dd-HH-mm-ss}.%i.log
+
+server:
+  port: 7071
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    data-username: sa
+    password: ''
+    url: jdbc:h2:mem:conatcts
+
+phbook:
+  messages:
+    saveContactSuccess: Contact saved successfully.
+    saveContactFailed: Failed to saved!
+    noContactFound: No contact found.
+    deleteContactSuccess: Contact deleted successfully.
+    deleteContactFailed: Failed to delete!

@@ -1,1 +1,0 @@
-2021-04-23 19:52:24.885  INFO 1384 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.phbook.entity.Contact (class must be instantiated by Interceptor)

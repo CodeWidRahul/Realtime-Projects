@@ -1,0 +1,4 @@
+2021-04-25 18:35:56.455  INFO 10108 --- [restartedMain] com.phbook.PhoneBookAppApplication       : Starting PhoneBookAppApplication using Java 1.8.0_241 on DESKTOP-0RGT615 with PID 10108 (D:\eclipse-workspace\Projects\PhoneBook-App\target\classes started by Rahul in D:\eclipse-workspace\Projects\PhoneBook-App)
+2021-04-25 18:35:56.470  INFO 10108 --- [restartedMain] com.phbook.PhoneBookAppApplication       : No active profile set, falling back to default profiles: default
+2021-04-25 18:35:56.634  INFO 10108 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-25 18:35:56.665  INFO 10108 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'

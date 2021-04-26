@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.phbook.constants.ApplicationConstants;
 import com.phbook.entity.Contact;
 import com.phbook.exception.NoDataFoundException;
+import com.phbook.props.ApplicationProperties;
 import com.phbook.service.ContactService;
 
 @RestController
@@ -26,9 +28,11 @@ public class ContactRestController {
 
 	private ContactService contactService;
 
-	public ContactRestController(ContactService contactService) {
+	private ApplicationProperties appProps;
+
+	public ContactRestController(ContactService contactService, ApplicationProperties appProps) {
 		this.contactService = contactService;
-		System.out.println(contactService.getClass().getName());
+		this.appProps = appProps;
 	}
 
 	@PostMapping
@@ -38,14 +42,16 @@ public class ContactRestController {
 			boolean isSaved = contactService.saveContact(contact);
 			if (isSaved) {
 				logger.info("** saveConatct() - Contact saved. **");
-				return new ResponseEntity<String>("Contact saved successfully.", HttpStatus.OK);
+				String successMsg = appProps.getMessages().get(ApplicationConstants.SAVE_CONTACT_SUCCESS);
+				return new ResponseEntity<>(successMsg, HttpStatus.OK);
 			}
 		} catch (Exception e) {
-			logger.error("** Exception occurred :- **" + e.getMessage());
+			logger.error("** Exception occurred :- **" + e);
 		}
 		logger.info("** saveConatct() - Contact not saved. **");
 		logger.debug("** saveConatct() - Execution ended. **");
-		return new ResponseEntity<String>("Failed to saved!", HttpStatus.INTERNAL_SERVER_ERROR);
+		String failedMsg = appProps.getMessages().get(ApplicationConstants.SAVE_CONTACT_FAIL);
+		return new ResponseEntity<>(failedMsg, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@GetMapping
@@ -57,10 +63,10 @@ public class ContactRestController {
 			if (allContacts.isEmpty())
 				logger.info("** getAllContacts() - Record not available ! **");
 		} catch (Exception e) {
-			logger.error("** Exception occurred :- **" + e.getMessage());
+			logger.error("** Exception occurred :- **" + e);
 		}
 		logger.debug("** getAllContacts() - Execution ended. **");
-		return new ResponseEntity<List<Contact>>(allContacts, HttpStatus.OK);
+		return new ResponseEntity<>(allContacts, HttpStatus.OK);
 	}
 
 	@GetMapping("/{contactId}")
@@ -72,11 +78,12 @@ public class ContactRestController {
 			contact = contactService.getContactById(contactId);
 			if (contact == null) {
 				logger.info("** getContactById() - No contact found ! **");
-				throw new NoDataFoundException("No contact found.");
+				String notFoundMsg = appProps.getMessages().get(ApplicationConstants.NO_CONTACT_FOUND);
+				throw new NoDataFoundException(notFoundMsg);
 			} else
 				responseEntity = new ResponseEntity<>(contact, HttpStatus.OK);
 		} catch (Exception e) {
-			logger.error("** Exception occurred :- **" + e.getMessage());
+			logger.error("** Exception occurred :- **" + e);
 			responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		logger.debug("** getContactById() - Execution ended. **");
@@ -87,16 +94,18 @@ public class ContactRestController {
 	public ResponseEntity<String> deleteContactById(@PathVariable Integer contactId) {
 		logger.debug("** deleteContactById() - Execution started. **");
 		ResponseEntity<String> responseEntity = null;
+		String failMsg = appProps.getMessages().get(ApplicationConstants.DELETE_CONTACT_FAIL);
 		try {
 			boolean isDeleted = contactService.deleteContactById(contactId);
 			if (isDeleted) {
 				logger.info("** deleteContactById() - contact deleted. **");
-				responseEntity = new ResponseEntity<String>("Contact deleted successfully.", HttpStatus.OK);
+				String successMsg = appProps.getMessages().get(ApplicationConstants.DELETE_CONTACT_SUCCESS);
+				responseEntity = new ResponseEntity<>(successMsg, HttpStatus.OK);
 			} else
-				responseEntity = new ResponseEntity<String>("Failed to delete!", HttpStatus.INTERNAL_SERVER_ERROR);
+				responseEntity = new ResponseEntity<>(failMsg, HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (Exception e) {
-			logger.error("** Exception occurred :- **" + e.getMessage());
-			responseEntity = new ResponseEntity<String>("Failed to delete!", HttpStatus.INTERNAL_SERVER_ERROR);
+			logger.error("** Exception occurred :- **" + e);
+			responseEntity = new ResponseEntity<>(failMsg, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		logger.debug("** deleteContactById() - Execution ended. **");
 		return responseEntity;

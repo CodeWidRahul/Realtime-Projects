@@ -20,12 +20,16 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.phbook.entity.Contact;
+import com.phbook.props.ApplicationProperties;
 import com.phbook.service.ContactService;
 
 @WebMvcTest(value = ContactRestController.class)
 public class ContactRestControllerTest {
 	@MockBean
 	private ContactService contactService;
+
+	@MockBean
+	private ApplicationProperties appProps;
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -163,21 +167,21 @@ public class ContactRestControllerTest {
 	@Test
 	public void testDeleteContactById_01() throws Exception {
 		when(contactService.deleteContactById(Mockito.anyInt())).thenReturn(true);
-		MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.delete("/api/contact/" + Mockito.anyInt());
+		MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.delete("/api/contact/1");
 		mockMvc.perform(reqBuilder).andExpect(status().isOk());
 	}
 
 	@Test
 	public void testDeleteContactById_02() throws Exception {
 		when(contactService.deleteContactById(Mockito.anyInt())).thenReturn(false);
-		MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.delete("/api/contact/" + Mockito.anyInt());
+		MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.delete("/api/contact/1");
 		mockMvc.perform(reqBuilder).andExpect(status().isInternalServerError());
 	}
 
 	@Test
 	public void testDeleteContactById_03() throws Exception {
 		when(contactService.deleteContactById(Mockito.anyInt())).thenThrow(RuntimeException.class);
-		MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.delete("/api/contact/" + Mockito.anyInt());
+		MockHttpServletRequestBuilder reqBuilder = MockMvcRequestBuilders.delete("/api/contact/1");
 		mockMvc.perform(reqBuilder).andExpect(status().isInternalServerError());
 	}
 }

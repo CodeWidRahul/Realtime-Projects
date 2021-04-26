@@ -44,7 +44,7 @@ public class ContactServiceImpl implements ContactService {
 			contactRepo.deleteById(contactId);
 			return true;
 		} catch (Exception e) {
-			throw new NoDataFoundException("No contact found to delete!");
+			throw new NoDataFoundException("No contact found to delete!" + e);
 		}
 	}
 

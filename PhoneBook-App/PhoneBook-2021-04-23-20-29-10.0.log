@@ -1,1 +1,0 @@
-2021-04-23 20:29:10.954  INFO 13888 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'

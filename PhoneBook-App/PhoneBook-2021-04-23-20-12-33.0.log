@@ -1,3 +1,0 @@
-2021-04-23 20:12:33.538  INFO 13516 --- [main] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.phbook.entity.Contact (class must be instantiated by Interceptor)
-2021-04-23 20:12:33.895  INFO 13516 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-04-23 20:12:33.917  INFO 13516 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'

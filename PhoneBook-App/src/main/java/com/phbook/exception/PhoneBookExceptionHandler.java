@@ -11,6 +11,6 @@ public class PhoneBookExceptionHandler {
 	@ExceptionHandler(value = NoDataFoundException.class)
 	public ResponseEntity<String> handleNoDataFoundException(NoDataFoundException ndfe) {
 		String errMsg = ndfe.getMessage();
-		return new ResponseEntity<String>(errMsg, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(errMsg, HttpStatus.BAD_REQUEST);
 	}
 }

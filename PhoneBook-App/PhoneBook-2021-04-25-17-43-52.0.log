@@ -1,0 +1,31 @@
+2021-04-25 17:43:52.231  INFO 8980 --- [RMI TCP Connection(3)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-25 17:43:52.236  INFO 8980 --- [RMI TCP Connection(3)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-25 17:43:52.236  INFO 8980 --- [RMI TCP Connection(3)-127.0.0.1] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-04-25 17:43:52.364 ERROR 8980 --- [HikariPool-5 connection adder] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Error thrown while acquiring connection from data source
+
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: The database is open in exclusive mode; can not open additional connections [90135-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:205) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:181) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.message.DbException.get(DbException.java:170) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.engine.Session.checkSuspended(Session.java:1369) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.engine.Session.isOpen(Session.java:1303) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.engine.Session.waitIfExclusiveModeEnabled(Session.java:1639) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.command.Command.executeQuery(Command.java:186) ~[h2-1.4.200.jar:1.4.200]
+	at org.h2.jdbc.JdbcConnection.isReadOnly(JdbcConnection.java:631) ~[h2-1.4.200.jar:1.4.200]
+	at com.zaxxer.hikari.pool.PoolBase.setupConnection(PoolBase.java:402) ~[HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:363) ~[HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206) ~[HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477) [HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.access$100(HikariPool.java:71) [HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:725) [HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:711) [HikariCP-3.4.5.jar:na]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.8.0_241]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.8.0_241]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.8.0_241]
+	at java.lang.Thread.run(Unknown Source) [na:1.8.0_241]
+
+2021-04-25 17:43:52.460  WARN 8980 --- [RMI TCP Connection(3)-127.0.0.1] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2021-04-25 17:43:52.462  INFO 8980 --- [RMI TCP Connection(3)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2021-04-25 17:43:52.618  INFO 8980 --- [RMI TCP Connection(3)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
