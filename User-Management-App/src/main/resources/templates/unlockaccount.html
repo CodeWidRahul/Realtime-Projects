@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign In!</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+
+					<div class="form-card mt-3">
+
+						<div class="container text-center">
+							<img alt="" style="width: 80px" th:src="@{/img/user.png}">
+						</div>
+
+						<h1 class="text-center">Unlock Account</h1>
+
+						<form th:action="@{/do_login}" method="post">
+
+							<div class="form-group">
+								<label for="email_field">Email address</label> <input
+									type="email" class="form-control" id="email_field" disabled>
+							</div>
+
+							<div class="form-group">
+								<label for="password_field">Temporary Password</label> <input
+									type="password" class="form-control" id="password_field"
+									required placeholder="Enter temporary password">
+							</div>
+
+							<div class="form-group">
+								<label for="password_field1">New Password</label> <input
+									type="password" class="form-control" id="password_field1"
+									required placeholder="Enter new password">
+							</div>
+
+							<div class="form-group">
+								<label for="password_field2">Confirm Password</label> <input
+									type="password" class="form-control" id="password_field2"
+									required placeholder="Re-Enter password">
+							</div>
+
+							<button type="submit" class="btn bg-primary text-white">Submit</button>
+							<button type="reset" class="btn bg-warning text-white">Clear</button>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
