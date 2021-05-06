@@ -13,6 +13,12 @@
 
 					<div class="form-card mt-3">
 
+						<div th:if="${session.msg}" class="alert text-center"
+							th:classappend="${session.msg.type}" role="alert">
+							<p class="mb-0" th:text="${session.msg.content}"></p>
+							<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+						</div>
+
 						<div class="container text-center">
 							<img alt="" style="width: 80px" th:src="@{/img/login.png}">
 						</div>
@@ -23,14 +29,14 @@
 
 							<div class="form-group">
 								<label for="email_field">Email address</label> <input
-									type="email" class="form-control" id="email_field" required
-									placeholder="Enter your email">
+									name="email" type="email" class="form-control" id="email_field"
+									required placeholder="Enter your email">
 							</div>
 
 							<div class="form-group">
 								<label for="password_field">Password</label> <input
-									type="password" class="form-control" id="password_field"
-									required placeholder="Enter your password">
+									name="password" type="password" class="form-control"
+									id="password_field" required placeholder="Enter your password">
 							</div>
 
 							<button type="submit" class="btn bg-primary text-white">Sign
@@ -38,8 +44,9 @@
 							<button type="reset" class="btn bg-warning text-white">Clear</button>
 
 							<div class="ml-auto mt-3">
-								<a th:href="@{/forgetpassword}" class="badge badge-primary">Forgot Password ?</a> 
-								<a th:href="@{/register}" class="badge badge-secondary">Sign Up !</a>
+								<a th:href="@{/forgetpassword}" class="badge badge-primary">Forgot
+									Password ?</a> <a th:href="@{/register}"
+									class="badge badge-secondary">Sign Up !</a>
 							</div>
 						</form>
 					</div>

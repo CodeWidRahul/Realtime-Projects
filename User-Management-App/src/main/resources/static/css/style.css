@@ -2,6 +2,10 @@ body {
 	background: #e2e2e2 !important;
 }
 
+section {
+	margin-top: 50px;
+}
+
 .bg-primary {
 	background: #009688 !important;
 }

@@ -20,46 +20,46 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "USER_ID")
+	@Column(name = "USER_ID", length = 4)
 	private Integer userId;
 
-	@Column(name = "FIRST_NAME")
+	@Column(name = "FIRST_NAME", length = 20, nullable = false)
 	private String firstName;
 
-	@Column(name = "LAST_NAME")
+	@Column(name = "LAST_NAME", length = 20)
 	private String lastName;
 
-	@Column(name = "DOB")
+	@Column(name = "DOB", length = 30)
 	private Date dob;
 
-	@Column(name = "GENDER")
+	@Column(name = "GENDER", length = 6)
 	private String gender;
 
-	@Column(name = "EMAIL")
+	@Column(name = "EMAIL", length = 40, nullable = false, unique = true)
 	private String email;
 
-	@Column(name = "PASSWORD")
+	@Column(name = "PASSWORD", length = 30)
 	private String password;
 
-	@Column(name = "PHONE_NO")
+	@Column(name = "PHONE_NO", length = 10, nullable = false)
 	private Long phoneNo;
 
-	@Column(name = "ACC_STATUS")
+	@Column(name = "ACC_STATUS", length = 8)
 	private String accountStatus;
 
-	@Column(name = "CITY_ID")
+	@Column(name = "CITY_ID", length = 3)
 	private Integer cityId;
 
-	@Column(name = "STATE_ID")
+	@Column(name = "STATE_ID", length = 3)
 	private Integer stateId;
 
-	@Column(name = "COUNTRY_ID")
+	@Column(name = "COUNTRY_ID", length = 3)
 	private Integer countryId;
 
-	@Column(name = "CREATED_DATE")
+	@Column(name = "CREATED_DATE", length = 30)
 	private Date createdDate;
 
-	@Column(name = "UPDATED_DATE")
+	@Column(name = "UPDATED_DATE", length = 30)
 	private Date updatedDate;
 
 }

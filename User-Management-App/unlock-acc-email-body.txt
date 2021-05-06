@@ -1,0 +1,14 @@
+Hi {FNAME} {LNAME},
+<br/>
+Welcome to User, Your registration is almost completed, please use below details to unlock your account.
+<br/>
+
+Temporary Password : {TEMP-PWD}<br/>
+<br/>
+
+<a href='http://localhost:9090/unlockaccount?e={EMAIL}'>
+Click here to unlock your account</a>
+<br/>
+
+Thanks & Regards,<br/>
+UserMgmt Team.<br/>
