@@ -33,13 +33,4 @@ public class UserManagementRestController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/forgetpassword")
-	public ModelAndView forgetPassword(Model model) {
-		model.addAttribute("title", "Forgot Password : User Management");
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("forgetpassword");
-		return modelAndView;
-	}
-
-
 }

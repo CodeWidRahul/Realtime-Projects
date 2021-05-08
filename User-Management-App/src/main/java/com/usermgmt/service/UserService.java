@@ -14,7 +14,7 @@ public interface UserService {
 
 	public List<Object[]> getCities(Integer stateId);
 
-	public String loginCheck(String email, String password);
+	public Object loginCheck(String email, String password);
 
 	public boolean saveUser(User user);
 
@@ -23,4 +23,6 @@ public interface UserService {
 	public boolean isTempPasswordValid(String email, String tempPassword);
 
 	public boolean unlockAccountAndUpdateStatus(UnlockAccount unlockAccount);
+
+	public boolean forgetPasswordAndSendMail(String email);
 }

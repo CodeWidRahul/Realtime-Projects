@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String loginCheck(String email, String password) {
+	public Object loginCheck(String email, String password) {
 		Optional<User> user = userRepo.getUserByEmail(email);
 
 		if (user.isPresent()) {
@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService {
 				if (user.get().getAccountStatus().equalsIgnoreCase("locked")) {
 					return "Your account is locked state please check your email and unlock first !!";
 				} else {
-					return "valid";
+					return user.get();
 				}
 			} else {
 				return "Password is wrong please re-enter correct password !!";
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
 
 		User userSaved = userRepo.save(user);
 
-		boolean isSent = emailService.sendAccountUnlockEmail(subject, body, user.getEmail());
+		boolean isSent = emailService.sendEmail(subject, body, user.getEmail());
 		return userSaved.getUserId() != null && isSent;
 	}
 
@@ -158,5 +158,19 @@ public class UserServiceImpl implements UserService {
 		String accStatus = "UNLOCKED";
 		return userRepo.updateAccountPasswordAndStatus(unlockAccount.getEmail(),
 				AES256.encrypt(unlockAccount.getCnfPassword()), accStatus) > 0;
+	}
+
+	@Override
+	public boolean forgetPasswordAndSendMail(String email) {
+		String password = userRepo.getPasswordByEmail(email);
+		if (password == null) {
+			return false;
+		}
+		String subject = "Forget Password | UserMgmt";
+		String body = "Hi, <br/>&nbsp;&nbsp; Welcome to User, Please check below details to login.<br/>&nbsp;&nbsp; Your password is : "
+				+ AES256.decrypt(password) + "<br/><br/><br/>Thanks & Regards,<br/>\r\n" + "UserMgmt Team.<br/>";
+		String to = email;
+		emailService.sendEmail(subject, body, to);
+		return true;
 	}
 }

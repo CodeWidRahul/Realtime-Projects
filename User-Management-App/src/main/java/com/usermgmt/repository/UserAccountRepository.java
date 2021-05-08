@@ -20,4 +20,7 @@ public interface UserAccountRepository extends JpaRepository<User, Integer> {
 	@Query("UPDATE User u SET u.password=:cnfPassword,u.accountStatus=:accStatus WHERE u.email=:email")
 	public Integer updateAccountPasswordAndStatus(String email, String cnfPassword, String accStatus);
 
+	@Query("SELECT password FROM User u WHERE u.email=:email")
+	public String getPasswordByEmail(String email);
+
 }

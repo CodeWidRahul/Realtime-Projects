@@ -14,7 +14,7 @@ public class EmailServiceImpl implements EmailService {
 	private JavaMailSender mailSender;
 
 	@Override
-	public boolean sendAccountUnlockEmail(String subject, String body, String to) {
+	public boolean sendEmail(String subject, String body, String to) {
 		try {
 			MimeMessage mailMessage = mailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(mailMessage);
